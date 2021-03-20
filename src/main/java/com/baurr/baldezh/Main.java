@@ -18,5 +18,6 @@ public class Main {
         Dao<Meme, Integer> memeDao = DaoManager.createDao(configuration.connectionSource(), Meme.class);
         Dao<MemeReview, Integer> memeReviewDao = DaoManager.createDao(configuration.connectionSource(), MemeReview.class);
         Dao<UserIntermation, Integer> userIntermationsDao = DaoManager.createDao(configuration.connectionSource(), UserIntermation.class);
+
     }
 }

@@ -7,6 +7,10 @@ import com.j256.ormlite.table.DatabaseTable;
 public class User extends Model{
     @DatabaseField(columnName = "id", id = true)
     private int id;
+    @DatabaseField(columnName = "login")
+    private String login;
+    @DatabaseField(columnName = "password")
+    private String password;
     @DatabaseField(columnName = "firstName")
     private String firstName;
     @DatabaseField(columnName = "lastName")
@@ -26,8 +30,11 @@ public class User extends Model{
     @DatabaseField(columnName = "status")
     private Enum status;
 
-    public User(int id, String firstName, String lastName, String sex, String country, String city, String birthDay, String date, String phone, Enum status) {
+
+    public User(int id, String login, String password, String firstName, String lastName, String sex, String country, String city, String birthDay, String date, String phone, Enum status) {
         this.id = id;
+        this.login = login;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
@@ -37,6 +44,14 @@ public class User extends Model{
         this.date = date;
         this.phone = phone;
         this.status = status;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public User() {
@@ -125,7 +140,17 @@ public class User extends Model{
         this.status = status;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public static final String FIELD_ID = "id";
+    public static final String FIELD_LOGIN = "login";
+    public static final String FIELD_PASSWORD = "password";
     public static final String FIELD_FIRST_NAME = "firstName";
     public static final String FIELD_LAST_NAME = "lastName";
     public static final String FIELD_SEX = "sex";
