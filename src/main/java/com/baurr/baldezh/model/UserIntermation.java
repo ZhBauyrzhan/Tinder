@@ -25,6 +25,9 @@ public class UserIntermation extends Model{
         this.reaction = reaction;
         this.date = date;
     }
+    public UserIntermation() {
+
+    }
 
     @Override
     public int getId() {
@@ -80,4 +83,10 @@ public class UserIntermation extends Model{
     public int hashCode() {
         return Objects.hash(id, source, target, reaction, date);
     }
+
+    public final static String FIELD_ID = "id";
+    public final static String FIELD_SOURCE = "source";
+    public final static String FIELD_TARGET = "target";
+    public final static String FIELD_REACTION = "reaction";
+    public final static String FIELD_DATE = "date";
 }

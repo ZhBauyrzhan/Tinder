@@ -1,6 +1,5 @@
 package com.baurr.baldezh.service;
 
-import com.baurr.baldezh.model.Meme;
 import com.baurr.baldezh.model.User;
 import com.baurr.baldezh.model.UserIntermation;
 import com.j256.ormlite.dao.Dao;

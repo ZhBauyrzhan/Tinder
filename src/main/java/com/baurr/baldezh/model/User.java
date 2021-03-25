@@ -28,10 +28,10 @@ public class User extends Model{
     @DatabaseField(columnName = "phone")
     private String phone;
     @DatabaseField(columnName = "status")
-    private Enum status;
+    private String status;
 
 
-    public User(int id, String login, String password, String firstName, String lastName, String sex, String country, String city, String birthDay, String date, String phone, Enum status) {
+    public User(int id, String login, String password, String firstName, String lastName, String sex, String country, String city, String birthDay, String date, String phone, String status) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -46,16 +46,16 @@ public class User extends Model{
         this.status = status;
     }
 
+    public User() {
+        super();
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public User() {
-        super();
     }
 
     @Override
@@ -132,11 +132,11 @@ public class User extends Model{
         this.phone = phone;
     }
 
-    public Enum getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Enum status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -160,6 +160,6 @@ public class User extends Model{
     public static final String FIELD_DATE = "date";
     public static final String FIELD_PHONE = "phone";
     public static final String FIELD_STATUS = "status";
-    public static final Enum ADMIN = Status.ADMIN;
-    public static final Enum COMMON = Status.COMMON;
+    public static final String ADMIN = "admin";
+    public static final String COMMON = "common";
 }

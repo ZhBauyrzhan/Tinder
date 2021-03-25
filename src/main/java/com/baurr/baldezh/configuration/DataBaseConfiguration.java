@@ -1,4 +1,4 @@
-package com.baurr.baldezh.Configuration;
+package com.baurr.baldezh.configuration;
 
 import com.j256.ormlite.support.ConnectionSource;
 

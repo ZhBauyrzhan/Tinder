@@ -85,9 +85,9 @@ public class MemeReview extends Model{
         return Objects.hash(id, userId, memeId, date, liked);
     }
 
-    private final static String FIELD_ID = "id";
-    private final static String FIELD_USER_ID = "userId";
-    private final static String FIELD_MEM_ID = "memeId";
-    private final static String FIELD_DATE = "date";
-    private final static String FIELD_LIKED = "liked";
+    public final static String FIELD_ID = "id";
+    public final static String FIELD_USER_ID = "userId";
+    public final static String FIELD_MEME_ID = "memeId";
+    public final static String FIELD_DATE = "date";
+    public final static String FIELD_LIKED = "liked";
 }

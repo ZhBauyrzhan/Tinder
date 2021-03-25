@@ -1,14 +1,14 @@
 package com.baurr.baldezh.controller;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.baurr.baldezh.model.Model;
 import com.baurr.baldezh.model.User;
 import com.baurr.baldezh.service.AbstractService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.javalin.http.Context;
 import org.mindrot.jbcrypt.BCrypt;
 
-import io.javalin.http.Context;
 import java.util.List;
 
 public abstract class AbstractController<T extends Model> implements Controller<T> {
@@ -21,13 +21,15 @@ public abstract class AbstractController<T extends Model> implements Controller<
         this.objectMapper = objectMapper;
         this.clazz = clazz;
     }
+    @Override
     public Boolean checkRights(Context context) {
+        String senderPassword = context.basicAuthCredentials().getPassword();
         String senderLogin = context.basicAuthCredentials().getUsername();
-        String senderPassword= context.basicAuthCredentials().getPassword();
         User user = service.findUserByLogin(senderLogin);
         return ((BCrypt.checkpw(senderPassword, user.getPassword()))
                 || user.getStatus().equals(User.ADMIN));
     }
+
     @Override
     public void getAll(Context context, int pageNumber, int pageSize) {
         try {
