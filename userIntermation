@@ -1,0 +1,702 @@
+[
+{
+"id": "0",
+"source": "83",
+"target": "51",
+"reaction": "right",
+"date": "03141081"
+},
+{
+"id": "1",
+"source": "11",
+"target": "20",
+"reaction": "left",
+"date": "58482040"
+},
+{
+"id": "2",
+"source": "57",
+"target": "74",
+"reaction": "left",
+"date": "02420700"
+},
+{
+"id": "3",
+"source": "61",
+"target": "47",
+"reaction": "right",
+"date": "19029899"
+},
+{
+"id": "4",
+"source": "47",
+"target": "53",
+"reaction": "left",
+"date": "43497193"
+},
+{
+"id": "5",
+"source": "37",
+"target": "56",
+"reaction": "left",
+"date": "91766212"
+},
+{
+"id": "6",
+"source": "35",
+"target": "64",
+"reaction": "right",
+"date": "83981764"
+},
+{
+"id": "7",
+"source": "29",
+"target": "61",
+"reaction": "right",
+"date": "36908981"
+},
+{
+"id": "8",
+"source": "9",
+"target": "5",
+"reaction": "left",
+"date": "90569758"
+},
+{
+"id": "9",
+"source": "22",
+"target": "61",
+"reaction": "right",
+"date": "33961235"
+},
+{
+"id": "10",
+"source": "26",
+"target": "19",
+"reaction": "right",
+"date": "85556159"
+},
+{
+"id": "11",
+"source": "7",
+"target": "75",
+"reaction": "right",
+"date": "56727463"
+},
+{
+"id": "12",
+"source": "60",
+"target": "85",
+"reaction": "right",
+"date": "72955190"
+},
+{
+"id": "13",
+"source": "35",
+"target": "65",
+"reaction": "left",
+"date": "24715495"
+},
+{
+"id": "14",
+"source": "55",
+"target": "91",
+"reaction": "right",
+"date": "06540553"
+},
+{
+"id": "15",
+"source": "0",
+"target": "40",
+"reaction": "right",
+"date": "42157595"
+},
+{
+"id": "16",
+"source": "22",
+"target": "15",
+"reaction": "right",
+"date": "40899239"
+},
+{
+"id": "17",
+"source": "34",
+"target": "17",
+"reaction": "left",
+"date": "14864229"
+},
+{
+"id": "18",
+"source": "3",
+"target": "28",
+"reaction": "left",
+"date": "59326808"
+},
+{
+"id": "19",
+"source": "80",
+"target": "59",
+"reaction": "left",
+"date": "62847267"
+},
+{
+"id": "20",
+"source": "48",
+"target": "70",
+"reaction": "right",
+"date": "75976407"
+},
+{
+"id": "21",
+"source": "79",
+"target": "63",
+"reaction": "right",
+"date": "67773448"
+},
+{
+"id": "22",
+"source": "6",
+"target": "52",
+"reaction": "right",
+"date": "47437642"
+},
+{
+"id": "23",
+"source": "67",
+"target": "22",
+"reaction": "left",
+"date": "43016432"
+},
+{
+"id": "24",
+"source": "27",
+"target": "30",
+"reaction": "right",
+"date": "15803502"
+},
+{
+"id": "25",
+"source": "21",
+"target": "69",
+"reaction": "right",
+"date": "83448227"
+},
+{
+"id": "26",
+"source": "83",
+"target": "16",
+"reaction": "right",
+"date": "60214469"
+},
+{
+"id": "27",
+"source": "8",
+"target": "27",
+"reaction": "right",
+"date": "88952986"
+},
+{
+"id": "28",
+"source": "25",
+"target": "64",
+"reaction": "right",
+"date": "49801175"
+},
+{
+"id": "29",
+"source": "1",
+"target": "15",
+"reaction": "left",
+"date": "82865709"
+},
+{
+"id": "30",
+"source": "83",
+"target": "26",
+"reaction": "left",
+"date": "51212136"
+},
+{
+"id": "31",
+"source": "70",
+"target": "39",
+"reaction": "left",
+"date": "23997255"
+},
+{
+"id": "32",
+"source": "33",
+"target": "90",
+"reaction": "left",
+"date": "56601755"
+},
+{
+"id": "33",
+"source": "87",
+"target": "53",
+"reaction": "right",
+"date": "91759937"
+},
+{
+"id": "34",
+"source": "46",
+"target": "84",
+"reaction": "left",
+"date": "20740397"
+},
+{
+"id": "35",
+"source": "27",
+"target": "29",
+"reaction": "right",
+"date": "91461800"
+},
+{
+"id": "36",
+"source": "1",
+"target": "24",
+"reaction": "left",
+"date": "66022742"
+},
+{
+"id": "37",
+"source": "19",
+"target": "6",
+"reaction": "left",
+"date": "71494178"
+},
+{
+"id": "38",
+"source": "92",
+"target": "85",
+"reaction": "right",
+"date": "96873743"
+},
+{
+"id": "39",
+"source": "53",
+"target": "61",
+"reaction": "right",
+"date": "36460744"
+},
+{
+"id": "40",
+"source": "88",
+"target": "47",
+"reaction": "right",
+"date": "22145953"
+},
+{
+"id": "41",
+"source": "26",
+"target": "56",
+"reaction": "left",
+"date": "67166745"
+},
+{
+"id": "42",
+"source": "72",
+"target": "29",
+"reaction": "right",
+"date": "35218688"
+},
+{
+"id": "43",
+"source": "27",
+"target": "23",
+"reaction": "right",
+"date": "43346267"
+},
+{
+"id": "44",
+"source": "60",
+"target": "54",
+"reaction": "left",
+"date": "03900795"
+},
+{
+"id": "45",
+"source": "10",
+"target": "12",
+"reaction": "right",
+"date": "86566700"
+},
+{
+"id": "46",
+"source": "84",
+"target": "3",
+"reaction": "left",
+"date": "04811681"
+},
+{
+"id": "47",
+"source": "32",
+"target": "61",
+"reaction": "right",
+"date": "17701956"
+},
+{
+"id": "48",
+"source": "79",
+"target": "39",
+"reaction": "right",
+"date": "55213834"
+},
+{
+"id": "49",
+"source": "86",
+"target": "7",
+"reaction": "right",
+"date": "13177544"
+},
+{
+"id": "50",
+"source": "0",
+"target": "6",
+"reaction": "left",
+"date": "46426962"
+},
+{
+"id": "51",
+"source": "63",
+"target": "59",
+"reaction": "right",
+"date": "41117010"
+},
+{
+"id": "52",
+"source": "76",
+"target": "53",
+"reaction": "left",
+"date": "45665342"
+},
+{
+"id": "53",
+"source": "49",
+"target": "35",
+"reaction": "right",
+"date": "64562347"
+},
+{
+"id": "54",
+"source": "25",
+"target": "58",
+"reaction": "left",
+"date": "00588605"
+},
+{
+"id": "55",
+"source": "89",
+"target": "29",
+"reaction": "right",
+"date": "72868644"
+},
+{
+"id": "56",
+"source": "87",
+"target": "77",
+"reaction": "right",
+"date": "96849200"
+},
+{
+"id": "57",
+"source": "35",
+"target": "52",
+"reaction": "left",
+"date": "39578577"
+},
+{
+"id": "58",
+"source": "83",
+"target": "5",
+"reaction": "left",
+"date": "32293781"
+},
+{
+"id": "59",
+"source": "1",
+"target": "49",
+"reaction": "right",
+"date": "46597339"
+},
+{
+"id": "60",
+"source": "78",
+"target": "97",
+"reaction": "left",
+"date": "89828278"
+},
+{
+"id": "61",
+"source": "80",
+"target": "70",
+"reaction": "left",
+"date": "09960525"
+},
+{
+"id": "62",
+"source": "88",
+"target": "21",
+"reaction": "left",
+"date": "08294141"
+},
+{
+"id": "63",
+"source": "8",
+"target": "24",
+"reaction": "left",
+"date": "17770538"
+},
+{
+"id": "64",
+"source": "11",
+"target": "21",
+"reaction": "right",
+"date": "31773124"
+},
+{
+"id": "65",
+"source": "26",
+"target": "49",
+"reaction": "right",
+"date": "09408680"
+},
+{
+"id": "66",
+"source": "30",
+"target": "35",
+"reaction": "left",
+"date": "21088462"
+},
+{
+"id": "67",
+"source": "92",
+"target": "54",
+"reaction": "right",
+"date": "46578637"
+},
+{
+"id": "68",
+"source": "63",
+"target": "32",
+"reaction": "left",
+"date": "50999595"
+},
+{
+"id": "69",
+"source": "68",
+"target": "3",
+"reaction": "right",
+"date": "52656789"
+},
+{
+"id": "70",
+"source": "97",
+"target": "23",
+"reaction": "right",
+"date": "31192421"
+},
+{
+"id": "71",
+"source": "48",
+"target": "25",
+"reaction": "left",
+"date": "39090187"
+},
+{
+"id": "72",
+"source": "67",
+"target": "57",
+"reaction": "left",
+"date": "10382153"
+},
+{
+"id": "73",
+"source": "10",
+"target": "35",
+"reaction": "left",
+"date": "19749951"
+},
+{
+"id": "74",
+"source": "78",
+"target": "23",
+"reaction": "right",
+"date": "32151889"
+},
+{
+"id": "75",
+"source": "59",
+"target": "25",
+"reaction": "right",
+"date": "61584212"
+},
+{
+"id": "76",
+"source": "15",
+"target": "18",
+"reaction": "left",
+"date": "96940210"
+},
+{
+"id": "77",
+"source": "45",
+"target": "34",
+"reaction": "left",
+"date": "27051945"
+},
+{
+"id": "78",
+"source": "58",
+"target": "36",
+"reaction": "right",
+"date": "74901299"
+},
+{
+"id": "79",
+"source": "48",
+"target": "87",
+"reaction": "right",
+"date": "95915100"
+},
+{
+"id": "80",
+"source": "27",
+"target": "68",
+"reaction": "left",
+"date": "93097662"
+},
+{
+"id": "81",
+"source": "61",
+"target": "65",
+"reaction": "left",
+"date": "64893512"
+},
+{
+"id": "82",
+"source": "12",
+"target": "79",
+"reaction": "right",
+"date": "17824745"
+},
+{
+"id": "83",
+"source": "76",
+"target": "16",
+"reaction": "left",
+"date": "63787237"
+},
+{
+"id": "84",
+"source": "1",
+"target": "72",
+"reaction": "right",
+"date": "00453903"
+},
+{
+"id": "85",
+"source": "24",
+"target": "43",
+"reaction": "right",
+"date": "76645137"
+},
+{
+"id": "86",
+"source": "48",
+"target": "99",
+"reaction": "left",
+"date": "65679450"
+},
+{
+"id": "87",
+"source": "21",
+"target": "90",
+"reaction": "left",
+"date": "26781695"
+},
+{
+"id": "88",
+"source": "83",
+"target": "57",
+"reaction": "left",
+"date": "98205781"
+},
+{
+"id": "89",
+"source": "10",
+"target": "39",
+"reaction": "left",
+"date": "27325626"
+},
+{
+"id": "90",
+"source": "83",
+"target": "20",
+"reaction": "left",
+"date": "62926815"
+},
+{
+"id": "91",
+"source": "20",
+"target": "0",
+"reaction": "left",
+"date": "94791537"
+},
+{
+"id": "92",
+"source": "4",
+"target": "62",
+"reaction": "left",
+"date": "49591685"
+},
+{
+"id": "93",
+"source": "46",
+"target": "82",
+"reaction": "right",
+"date": "93154741"
+},
+{
+"id": "94",
+"source": "61",
+"target": "18",
+"reaction": "right",
+"date": "73473244"
+},
+{
+"id": "95",
+"source": "6",
+"target": "28",
+"reaction": "right",
+"date": "69964550"
+},
+{
+"id": "96",
+"source": "54",
+"target": "40",
+"reaction": "right",
+"date": "45128932"
+},
+{
+"id": "97",
+"source": "36",
+"target": "63",
+"reaction": "left",
+"date": "18452605"
+},
+{
+"id": "98",
+"source": "4",
+"target": "51",
+"reaction": "right",
+"date": "42213043"
+},
+{
+"id": "99",
+"source": "15",
+"target": "65",
+"reaction": "right",
+"date": "80439485"
+},
+]

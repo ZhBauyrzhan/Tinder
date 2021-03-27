@@ -20,7 +20,7 @@ public class UserDeserializer extends StdDeserializer<User> {
     }
 
     @Override
-    public User deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+    public User deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         JsonNode root = jsonParser.getCodec().readTree(jsonParser);
         int id = root.get(User.FIELD_ID).asInt();
         String login = root.get(User.FIELD_LOGIN).asText();

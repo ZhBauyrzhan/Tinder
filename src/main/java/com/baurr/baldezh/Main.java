@@ -71,7 +71,39 @@ public class Main {
                     delete(ctx -> userController.delete(ctx, ctx.pathParam("id", Integer.class).get()));
                 });
             });
-
+            path("memes", () -> {
+                get(ctx -> memeController.getAll(ctx,
+                        (ctx.queryParam("page", Integer.class).getOrNull() != null ? ctx.queryParam("page", Integer.class).get()-1 : 0),
+                        (ctx.queryParam("size", Integer.class).getOrNull() != null ? ctx.queryParam("size", Integer.class).get() : 5 )));
+                post(memeController::post);
+                path(":id", () -> {
+                    get(ctx -> memeController.getOne(ctx, ctx.pathParam("id", Integer.class).get()));
+                    patch(ctx -> memeController.patch(ctx, ctx.pathParam("id", Integer.class).get()));
+                    delete(ctx -> memeController.delete(ctx, ctx.pathParam("id", Integer.class).get()));
+                });
+            });
+            path("memeReview", () -> {
+                get(ctx -> memeReviewController.getAll(ctx,
+                        (ctx.queryParam("page", Integer.class).getOrNull() != null ? ctx.queryParam("page", Integer.class).get()-1 : 0),
+                        (ctx.queryParam("size", Integer.class).getOrNull() != null ? ctx.queryParam("size", Integer.class).get() : 5 )));
+                post(memeReviewController::post);
+                path(":id", () -> {
+                    get(ctx -> memeReviewController.getOne(ctx, ctx.pathParam("id", Integer.class).get()));
+                    patch(ctx -> memeReviewController.patch(ctx, ctx.pathParam("id", Integer.class).get()));
+                    delete(ctx -> memeReviewController.delete(ctx, ctx.pathParam("id", Integer.class).get()));
+                });
+            });
+            path("userIntermation", () -> {
+                get(ctx -> userIntermationController.getAll(ctx,
+                        (ctx.queryParam("page", Integer.class).getOrNull() != null ? ctx.queryParam("page", Integer.class).get()-1 : 0),
+                        (ctx.queryParam("size", Integer.class).getOrNull() != null ? ctx.queryParam("size", Integer.class).get() : 5 )));
+                post(userIntermationController::post);
+                path(":id", () -> {
+                    get(ctx -> userIntermationController.getOne(ctx, ctx.pathParam("id", Integer.class).get()));
+                    patch(ctx -> userIntermationController.patch(ctx, ctx.pathParam("id", Integer.class).get()));
+                    delete(ctx -> userIntermationController.delete(ctx, ctx.pathParam("id", Integer.class).get()));
+                });
+            });
         });
         app.start(7777);
     }

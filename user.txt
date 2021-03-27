@@ -1,0 +1,30 @@
+[
+{
+"id": "0",
+"login": "vrrRCjcwah",
+"password": "DmMcZNfyijzXuRw",
+"firstName": "nYkSgUdLjF",
+"lastName": "PvirIQKCuZ",
+"sex": "male",
+"country": "BtyHKEcg",
+"city": "DVFhcFJ",
+"birthDay": "14169238",
+"date": "59755247",
+"phone": "+8829248",
+"status": "common"
+},
+{
+"id": "1",
+"login": "XUiMIJuzhm",
+"password": "ZOFEfwKVZTixRML",
+"firstName": "HlYpkXcLXB",
+"lastName": "RZXTThuAKB",
+"sex": "female",
+"country": "VDbLaaQu",
+"city": "xizHdvr",
+"birthDay": "51956333",
+"date": "79459097",
+"phone": "+4462139",
+"status": "common"
+}
+]
