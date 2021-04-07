@@ -1,7 +1,12 @@
 package com.baurr.baldezh.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @DatabaseTable(tableName = "user")
 public class User extends Model{
@@ -24,14 +29,17 @@ public class User extends Model{
     @DatabaseField(columnName = "birthDay")
     private String birthDay;
     @DatabaseField(columnName = "date")
-    private String date;
+    private LocalDate date;
+    @DatabaseField(columnName = "memeRequestTime")
+    private LocalDateTime memeRequestTime;
+    @DatabaseField(columnName = "userRequestTime")
+    private LocalDateTime userRequestTime;
     @DatabaseField(columnName = "phone")
     private String phone;
     @DatabaseField(columnName = "status")
     private String status;
 
-
-    public User(int id, String login, String password, String firstName, String lastName, String sex, String country, String city, String birthDay, String date, String phone, String status) {
+    public User(int id, String login, String password, String firstName, String lastName, String sex, String country, String city, String birthDay, LocalDate date, LocalDateTime memeRequestTime, LocalDateTime userRequestTime, String phone, String status) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -42,12 +50,28 @@ public class User extends Model{
         this.city = city;
         this.birthDay = birthDay;
         this.date = date;
+        this.memeRequestTime = memeRequestTime;
+        this.userRequestTime = userRequestTime;
         this.phone = phone;
         this.status = status;
     }
 
-    public User() {
-        super();
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
@@ -56,16 +80,6 @@ public class User extends Model{
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @Override
-    public int getId() {
-        return super.getId();
-    }
-
-    @Override
-    public void setId(int id) {
-        super.setId(id);
     }
 
     public String getFirstName() {
@@ -116,12 +130,28 @@ public class User extends Model{
         this.birthDay = birthDay;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public LocalDateTime getMemeRequestTime() {
+        return memeRequestTime;
+    }
+
+    public void setMemeRequestTime(LocalDateTime memeRequestTime) {
+        this.memeRequestTime = memeRequestTime;
+    }
+
+    public LocalDateTime getUserRequestTime() {
+        return userRequestTime;
+    }
+
+    public void setUserRequestTime(LocalDateTime userRequestTime) {
+        this.userRequestTime = userRequestTime;
     }
 
     public String getPhone() {
@@ -140,15 +170,9 @@ public class User extends Model{
         this.status = status;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public static final String FIELD_ID = "id";
+    public static final String FIELD_MEME_REQUEST_TIME = "memeRequestTime";
+    public static final String FIELD_USER_REQUEST_TIME = "userRequestTime";
     public static final String FIELD_LOGIN = "login";
     public static final String FIELD_PASSWORD = "password";
     public static final String FIELD_FIRST_NAME = "firstName";
@@ -162,4 +186,10 @@ public class User extends Model{
     public static final String FIELD_STATUS = "status";
     public static final String ADMIN = "admin";
     public static final String COMMON = "common";
+    public static final String MALE = "male";
+    public static final String FEMALE = "female";
+    public static final int NEED_DAYS = 0;
+    public static final int NEED_HOURS = 0;
+    public static final int NEED_MINUTES = 5;
+    public static final int NEED_SECONDS = 0;
 }

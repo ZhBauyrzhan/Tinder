@@ -3,6 +3,9 @@ package com.baurr.baldezh.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @DatabaseTable(tableName = "meme")
 public class Meme extends Model{
     @DatabaseField(columnName = "id", id = true)
@@ -10,9 +13,9 @@ public class Meme extends Model{
     @DatabaseField(columnName = "link")
     private String link;
     @DatabaseField(columnName = "date")
-    private String date;
+    private LocalDateTime date;
 
-    public Meme(int id, String link, String date) {
+    public Meme(int id, String link, LocalDateTime date) {
         this.id = id;
         this.link = link;
         this.date = date;
@@ -40,11 +43,11 @@ public class Meme extends Model{
         this.link = link;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

@@ -5,6 +5,7 @@ import com.baurr.baldezh.model.Model;
 import com.baurr.baldezh.model.User;
 import com.baurr.baldezh.service.AbstractService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.http.Context;
 import org.mindrot.jbcrypt.BCrypt;
@@ -20,6 +21,20 @@ public abstract class AbstractController<T extends Model> implements Controller<
         this.service = service;
         this.objectMapper = objectMapper;
         this.clazz = clazz;
+    }
+    public void bigPost(Context context) {
+        try {
+            List<T> objects = objectMapper.readValue(context.body(), new TypeReference<List<T>>(){});
+            for(int i = 0; i < objects.size(); i++) {
+                service.save(objects.get(i));
+                T saved = service.findById(objects.get(i).getId());
+                context.result(objectMapper.writeValueAsString(saved));
+            }
+            context.status(201);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            context.status(400);
+        }
     }
     @Override
     public Boolean checkRights(Context context) {
@@ -99,4 +114,5 @@ public abstract class AbstractController<T extends Model> implements Controller<
         } else
             context.status(404);
     }
+
 }

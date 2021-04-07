@@ -64,9 +64,10 @@ public class Main {
                 get(ctx -> userController.getAll(ctx,
                         (ctx.queryParam("page", Integer.class).getOrNull() != null ? ctx.queryParam("page", Integer.class).get()-1 : 0),
                         (ctx.queryParam("size", Integer.class).getOrNull() != null ? ctx.queryParam("size", Integer.class).get() : 5 )));
-                post(userController::post);
+                post(userController::bigPost);
                 path(":id", () -> {
                     get(ctx -> userController.getOne(ctx, ctx.pathParam("id", Integer.class).get()));
+                    post(userController::post);
                     patch(ctx -> userController.patch(ctx, ctx.pathParam("id", Integer.class).get()));
                     delete(ctx -> userController.delete(ctx, ctx.pathParam("id", Integer.class).get()));
                 });
@@ -75,9 +76,10 @@ public class Main {
                 get(ctx -> memeController.getAll(ctx,
                         (ctx.queryParam("page", Integer.class).getOrNull() != null ? ctx.queryParam("page", Integer.class).get()-1 : 0),
                         (ctx.queryParam("size", Integer.class).getOrNull() != null ? ctx.queryParam("size", Integer.class).get() : 5 )));
-                post(memeController::post);
+                post(memeController::bigPost);
                 path(":id", () -> {
                     get(ctx -> memeController.getOne(ctx, ctx.pathParam("id", Integer.class).get()));
+                    post(memeController::post);
                     patch(ctx -> memeController.patch(ctx, ctx.pathParam("id", Integer.class).get()));
                     delete(ctx -> memeController.delete(ctx, ctx.pathParam("id", Integer.class).get()));
                 });
@@ -86,9 +88,10 @@ public class Main {
                 get(ctx -> memeReviewController.getAll(ctx,
                         (ctx.queryParam("page", Integer.class).getOrNull() != null ? ctx.queryParam("page", Integer.class).get()-1 : 0),
                         (ctx.queryParam("size", Integer.class).getOrNull() != null ? ctx.queryParam("size", Integer.class).get() : 5 )));
-                post(memeReviewController::post);
+                post(memeReviewController::bigPost);
                 path(":id", () -> {
                     get(ctx -> memeReviewController.getOne(ctx, ctx.pathParam("id", Integer.class).get()));
+                    post(memeReviewController::post);
                     patch(ctx -> memeReviewController.patch(ctx, ctx.pathParam("id", Integer.class).get()));
                     delete(ctx -> memeReviewController.delete(ctx, ctx.pathParam("id", Integer.class).get()));
                 });
@@ -97,9 +100,10 @@ public class Main {
                 get(ctx -> userIntermationController.getAll(ctx,
                         (ctx.queryParam("page", Integer.class).getOrNull() != null ? ctx.queryParam("page", Integer.class).get()-1 : 0),
                         (ctx.queryParam("size", Integer.class).getOrNull() != null ? ctx.queryParam("size", Integer.class).get() : 5 )));
-                post(userIntermationController::post);
+                post(userIntermationController::bigPost);
                 path(":id", () -> {
                     get(ctx -> userIntermationController.getOne(ctx, ctx.pathParam("id", Integer.class).get()));
+                    post(userIntermationController::post);
                     patch(ctx -> userIntermationController.patch(ctx, ctx.pathParam("id", Integer.class).get()));
                     delete(ctx -> userIntermationController.delete(ctx, ctx.pathParam("id", Integer.class).get()));
                 });

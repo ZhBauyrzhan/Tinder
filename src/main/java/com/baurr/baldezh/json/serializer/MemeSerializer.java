@@ -17,7 +17,7 @@ public class MemeSerializer extends StdSerializer<Meme> {
         gen.writeStartObject();
         gen.writeNumberField(Meme.FIELD_ID, meme.getId());
         gen.writeStringField(Meme.FIELD_LINK, meme.getLink());
-        gen.writeStringField(Meme.FIELD_DATE, meme.getDate());
+        gen.writeObjectField(Meme.FIELD_DATE, meme.getDate());
         gen.writeEndObject();
     }
 }

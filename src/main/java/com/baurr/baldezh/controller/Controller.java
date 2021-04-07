@@ -10,5 +10,6 @@ public interface Controller<T extends Model>{
     void post(Context context);
     void patch(Context context, int id);
     void delete(Context context, int id);
+    void bigPost(Context context);
     Boolean checkRights(Context context);
 }

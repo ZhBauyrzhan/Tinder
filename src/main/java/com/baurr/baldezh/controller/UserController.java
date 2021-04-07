@@ -6,7 +6,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.http.Context;
+import org.mindrot.jbcrypt.BCrypt;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class UserController extends AbstractController<User>{
@@ -18,20 +20,27 @@ public class UserController extends AbstractController<User>{
         this.service = service;
         this.objectMapper = objectMapper;
     }
+
     @Override
-    public void post(Context context) {
-        try {
-            List<User> users = objectMapper.readValue(context.body(), new TypeReference<List<User>>(){});
-            for(int i = 0; i < users.size(); i++) {
-                service.save(users.get(i));
-                User saved = service.findById(users.get(i).getId());
-                context.result(objectMapper.writeValueAsString(saved));
-            }
-            context.status(201);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            context.status(400);
-        }
+    public Boolean checkRights(Context context) {
+        String senderPassword = context.basicAuthCredentials().getPassword();
+        String senderLogin = context.basicAuthCredentials().getUsername();
+        User user = service.findUserByLogin(senderLogin);
+        LocalDateTime localDateTime = LocalDateTime.now();
+        return ( (BCrypt.checkpw(senderPassword, user.getPassword()) || user.getStatus().equals(User.ADMIN))
+                && (user.getUserRequestTime().plusDays(User.NEED_DAYS).plusHours(User.NEED_HOURS).plusMinutes(User.NEED_MINUTES).plusSeconds(User.NEED_SECONDS).isAfter(localDateTime)) );
     }
 
+    @Override
+    public void getAll(Context context, int pageNumber, int pageSize) {
+        try {
+            if(super.checkRights(context)) {
+                List<User> returnedModels = service.findAll(pageNumber, pageSize);
+                context.result(objectMapper.writeValueAsString(returnedModels));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            context.status(500);
+        }
+    }
 }

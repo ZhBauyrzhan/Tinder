@@ -13,6 +13,12 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class UserDeserializer extends StdDeserializer<User> {
     public UserDeserializer() {
@@ -32,9 +38,11 @@ public class UserDeserializer extends StdDeserializer<User> {
         String country = root.get(User.FIELD_COUNTRY).asText();
         String city = root.get(User.FIELD_CITY).asText();
         String birthDay = root.get(User.FIELD_BIRTH_DAY).asText();
-        String date = root.get(User.FIELD_DATE).asText();
+        LocalDate date = LocalDate.parse(root.get(User.FIELD_DATE).asText());
+        LocalDateTime memeRequestTime =  LocalDateTime.parse(root.get(User.FIELD_MEME_REQUEST_TIME).asText());
+        LocalDateTime userRequestTime=  LocalDateTime.parse(root.get(User.FIELD_USER_REQUEST_TIME).asText());
         String phone = root.get(User.FIELD_PHONE).asText();
         String status = root.get(User.FIELD_STATUS).asText();
-        return new User(id, login, hashPassword, firstName, lastName, sex, country, city, birthDay, date, phone, status);
+        return new User(id, login, hashPassword, firstName, lastName, sex, country, city, birthDay, date, memeRequestTime, userRequestTime, phone, status);
     }
 }

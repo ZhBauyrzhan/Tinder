@@ -19,19 +19,4 @@ public class MemeReviewController extends AbstractController<MemeReview> {
         this.service = service;
         this.objectMapper = objectMapper;
     }
-    @Override
-    public void post(Context context) {
-        try {
-            List<MemeReview> memeReviews = objectMapper.readValue(context.body(), new TypeReference<List<MemeReview>>(){});
-            for(int i = 0; i < memeReviews.size(); i++) {
-                service.save(memeReviews.get(i));
-                MemeReview saved = service.findById(memeReviews.get(i).getId());
-                context.result(objectMapper.writeValueAsString(saved));
-            }
-            context.status(201);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            context.status(400);
-        }
-    }
 }
