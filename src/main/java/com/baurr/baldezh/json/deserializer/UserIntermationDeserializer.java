@@ -1,8 +1,5 @@
 package com.baurr.baldezh.json.deserializer;
 
-import com.baurr.baldezh.model.Meme;
-import com.baurr.baldezh.model.MemeReview;
-import com.baurr.baldezh.model.User;
 import com.baurr.baldezh.model.UserIntermation;
 import com.baurr.baldezh.service.UserService;
 import com.fasterxml.jackson.core.JsonParser;

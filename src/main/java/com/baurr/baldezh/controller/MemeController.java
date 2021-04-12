@@ -3,6 +3,7 @@ package com.baurr.baldezh.controller;
 import com.baurr.baldezh.model.Meme;
 import com.baurr.baldezh.model.User;
 import com.baurr.baldezh.service.AbstractService;
+import com.baurr.baldezh.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,11 +16,13 @@ import java.util.List;
 public class MemeController extends AbstractController<Meme>{
     private final AbstractService<Meme> service;
     private final ObjectMapper objectMapper;
+    private UserService userService;
 
-    public MemeController(AbstractService<Meme> service, ObjectMapper objectMapper) {
+    public MemeController(AbstractService<Meme> service, ObjectMapper objectMapper, UserService userService) {
         super(service, objectMapper, Meme.class);
         this.service = service;
         this.objectMapper = objectMapper;
+        this.userService = userService;
     }
     @Override
     public void bigPost(Context context) {
@@ -50,6 +53,12 @@ public class MemeController extends AbstractController<Meme>{
         try {
             if(checkRights(context)) {
                 List<Meme> returnedModels = service.findAll(pageNumber, pageSize);
+                String senderLogin = context.basicAuthCredentials().getUsername();
+                User user = service.findUserByLogin(senderLogin);
+                System.out.println(user.getMemeRequestTime());
+                user.setMemeRequestTime( LocalDateTime.now() );
+                System.out.println(user.getMemeRequestTime());
+                userService.update(user);
                 context.result(objectMapper.writeValueAsString(returnedModels));
             }
         } catch (Exception e) {

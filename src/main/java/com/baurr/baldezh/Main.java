@@ -32,18 +32,15 @@ public class Main {
         Dao<Meme, Integer> memeDao = DaoManager.createDao(configuration.connectionSource(), Meme.class);
         Dao<MemeReview, Integer> memeReviewDao = DaoManager.createDao(configuration.connectionSource(), MemeReview.class);
         Dao<UserIntermation, Integer> userIntermationsDao = DaoManager.createDao(configuration.connectionSource(), UserIntermation.class);
-
         UserService userService = new UserService(userDao);
         UserIntermationService userIntermationService = new UserIntermationService(userIntermationsDao, userDao);
         MemeService memeService = new MemeService(memeDao, userDao);
         MemeReviewService memeReviewService = new MemeReviewService(memeReviewDao, userDao);
-
         Javalin app = Javalin.create(javalinConfig -> {
             javalinConfig.prefer405over404 = true;
             javalinConfig.enableCorsForAllOrigins();
             javalinConfig.enableDevLogging();
         });
-
         SimpleModule simpleModule = new SimpleModule()
                 .addSerializer(LocalDate.class, new LocalDateSerializer()).addDeserializer(LocalDate.class, new LocalDateDeserializer())
                 .addSerializer(LocalDateTime.class, new LocalDateTimeSerializer()).addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer())
@@ -52,9 +49,8 @@ public class Main {
                 .addSerializer(UserIntermation.class, new UserIntermationSerializer()).addDeserializer(UserIntermation.class, new UserIntermationDeserializer(userService))
                 .addSerializer(User.class, new UserSerializer()).addDeserializer(User.class, new UserDeserializer());
         ObjectMapper objectMapper = new ObjectMapper().registerModule(simpleModule);
-
         UserController userController = new UserController(userService, objectMapper, userIntermationService, memeReviewService);
-        MemeController memeController = new MemeController(memeService, objectMapper);
+        MemeController memeController = new MemeController(memeService, objectMapper, userService);
         MemeReviewController memeReviewController = new MemeReviewController(memeReviewService, objectMapper);
         UserIntermationController userIntermationController = new UserIntermationController(userIntermationService, objectMapper);
         app.routes( () -> {
@@ -62,7 +58,7 @@ public class Main {
                 get(ctx -> userController.getAll(ctx,
                         (ctx.queryParam("page", Integer.class).getOrNull() != null ? ctx.queryParam("page", Integer.class).get()-1 : 0),
                         (ctx.queryParam("size", Integer.class).getOrNull() != null ? ctx.queryParam("size", Integer.class).get() : 5 )));
-                post(userController::bigPost);
+                post(userController::bigPost); // при даче массива json он запостит всё
                 path(":id", () -> {
                     get(ctx -> userController.getOne(ctx, ctx.pathParam("id", Integer.class).get()));
                     post(userController::post);

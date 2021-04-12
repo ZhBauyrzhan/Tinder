@@ -1,7 +1,6 @@
 package com.baurr.baldezh.controller;
 
 import com.baurr.baldezh.model.MemeReview;
-import com.baurr.baldezh.model.User;
 import com.baurr.baldezh.service.AbstractService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;

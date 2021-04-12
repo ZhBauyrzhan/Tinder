@@ -1,24 +1,16 @@
 package com.baurr.baldezh.json.deserializer;
 
-import com.baurr.baldezh.model.Meme;
 import com.baurr.baldezh.model.MemeReview;
 import com.baurr.baldezh.model.User;
-import com.baurr.baldezh.service.MemeService;
-import com.baurr.baldezh.service.UserService;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.TimeZone;
 
 public class UserDeserializer extends StdDeserializer<User> {
     public UserDeserializer() {

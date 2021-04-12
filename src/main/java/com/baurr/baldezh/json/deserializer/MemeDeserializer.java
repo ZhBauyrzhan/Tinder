@@ -1,8 +1,6 @@
 package com.baurr.baldezh.json.deserializer;
 
-import com.baurr.baldezh.json.serializer.LocalDateSerializer;
 import com.baurr.baldezh.model.Meme;
-import com.baurr.baldezh.model.User;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -10,7 +8,6 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class MemeDeserializer extends StdDeserializer<Meme> {
     public MemeDeserializer() {

@@ -7,17 +7,14 @@ import com.baurr.baldezh.model.UserIntermation;
 import com.baurr.baldezh.service.AbstractService;
 import com.baurr.baldezh.service.MemeReviewService;
 import com.baurr.baldezh.service.UserIntermationService;
-import com.baurr.baldezh.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.http.Context;
 import org.mindrot.jbcrypt.BCrypt;
-
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class UserController extends AbstractController<User>{
     private final AbstractService<User> service;
@@ -62,9 +59,9 @@ public class UserController extends AbstractController<User>{
     @Override
     public void getAll(Context context, int pageNumber, int pageSize) {
         try {
-            if(super.checkRights(context)) {
-                for(int i = 0; i < 20; i++)
-                    System.out.println(1);
+            if(checkRights(context)) {
+//                for(int i = 0; i < 20; i++)
+//                    System.out.println(1);
                 String senderLogin = context.basicAuthCredentials().getUsername();
                 User user = service.findUserByLogin(senderLogin);
                 List<User> returnedModels = service.findUser(pageNumber, pageSize, user.getSex());
@@ -92,14 +89,15 @@ public class UserController extends AbstractController<User>{
                 }
                 List<User>users = new ArrayList<>();
                 int addedUserCount = 0;
-                System.out.println(userIntermations.get(0).getTarget());
+//                System.out.println(userIntermations.get(0).getTarget());
+//                System.out.println(user);
                 for (int i = 0; i < userIntermations.size(); i++) {
                     if (userIntermations.get(i).getTarget().equals(user)
                             && userIntermations.get(i).getReaction().equals("right")
                             && returnedModels.contains(userIntermations.get(i).getTarget())
                             && !possibleUsers.containsKey(userIntermations.get(i))) {
                         addedUserCount++;
-                        users.add(userIntermations.get(i).getTarget());
+                        users.add(userIntermations.get(i).getSource());
                     }
                     if(addedUserCount + possibleUsers.size() >= 20 && addedUserCount >= 10) {
                         break;
@@ -116,7 +114,10 @@ public class UserController extends AbstractController<User>{
                     if(users.size() >= 20)
                         break;
                 }
-                System.out.println(users.size());
+                System.out.println(user.getUserRequestTime());
+                user.setUserRequestTime(LocalDateTime.now());
+                System.out.println(user.getUserRequestTime());
+                service.update(user);
                 context.result(objectMapper.writeValueAsString(users));
             }
         } catch (Exception e) {

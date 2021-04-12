@@ -23,14 +23,6 @@ public interface Service<T extends Model> {
             throw new MyException(e.getMessage());
         }
     }
-    default List<T> findBy(String columnName, Object value) {
-        try {
-            return dao().queryForEq(columnName, value);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new MyException("SQL ex", e);
-        }
-    }
 
     default T findById(int id) {
         try {
