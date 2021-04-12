@@ -1,5 +1,6 @@
 package com.baurr.baldezh.json.serializer;
 
+import com.baurr.baldezh.model.User;
 import com.baurr.baldezh.model.UserIntermation;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
@@ -18,7 +19,7 @@ public class UserIntermationSerializer extends StdSerializer<UserIntermation> {
         gen.writeObjectField(UserIntermation.FIELD_SOURCE, userIntermation.getSource());
         gen.writeObjectField(UserIntermation.FIELD_TARGET, userIntermation.getTarget());
         gen.writeStringField(UserIntermation.FIELD_REACTION, userIntermation.getReaction());
-        gen.writeStringField(UserIntermation.FIELD_DATE, userIntermation.getDate());
+        gen.writeObjectField(UserIntermation.FIELD_DATE, userIntermation.getDate());
         gen.writeEndObject();
     }
 }

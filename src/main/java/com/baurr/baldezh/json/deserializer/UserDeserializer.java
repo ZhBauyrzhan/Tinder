@@ -39,10 +39,11 @@ public class UserDeserializer extends StdDeserializer<User> {
         String city = root.get(User.FIELD_CITY).asText();
         LocalDate birthDay =  root.get(User.FIELD_BIRTH_DAY).traverse(jsonParser.getCodec()).readValueAs(LocalDate.class);
         LocalDate date =  root.get(User.FIELD_DATE).traverse(jsonParser.getCodec()).readValueAs(LocalDate.class);
+        int lastMemeNumber =    root.get(User.FIELD_LAST_MEME_NUMBER).asInt();
         LocalDateTime memeRequestTime =  root.get(User.FIELD_MEME_REQUEST_TIME).traverse(jsonParser.getCodec()).readValueAs(LocalDateTime.class);
         LocalDateTime userRequestTime =  root.get(User.FIELD_USER_REQUEST_TIME).traverse(jsonParser.getCodec()).readValueAs(LocalDateTime.class);
         String phone = root.get(User.FIELD_PHONE).asText();
         String status = root.get(User.FIELD_STATUS).asText();
-        return new User(id, login, hashPassword, firstName, lastName, sex, country, city, birthDay, date, memeRequestTime, userRequestTime, phone, status);
+        return new User(id, login, hashPassword, firstName, lastName, sex, country, city, birthDay, date, lastMemeNumber, memeRequestTime, userRequestTime, phone, status);
     }
 }

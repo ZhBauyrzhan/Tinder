@@ -6,6 +6,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @DatabaseTable(tableName = "user")
 public class User extends Model{
@@ -29,6 +30,8 @@ public class User extends Model{
     private LocalDate birthDay;
     @DatabaseField(columnName = "date", dataType = DataType.SERIALIZABLE)
     private LocalDate date;
+    @DatabaseField(columnName = "lastMemeNumber")
+    private int lastMemeNumber;
     @DatabaseField(columnName = "memeRequestTime", dataType = DataType.SERIALIZABLE)
     private LocalDateTime memeRequestTime;
     @DatabaseField(columnName = "userRequestTime", dataType = DataType.SERIALIZABLE)
@@ -38,7 +41,11 @@ public class User extends Model{
     @DatabaseField(columnName = "status")
     private String status;
 
-    public User(int id, String login, String password, String firstName, String lastName, String sex, String country, String city, LocalDate birthDay, LocalDate date, LocalDateTime memeRequestTime, LocalDateTime userRequestTime, String phone, String status) {
+
+    public User() {
+
+    }
+    public User(int id, String login, String password, String firstName, String lastName, String sex, String country, String city, LocalDate birthDay, LocalDate date, int lastMemeNumber, LocalDateTime memeRequestTime, LocalDateTime userRequestTime, String phone, String status) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -49,15 +56,46 @@ public class User extends Model{
         this.city = city;
         this.birthDay = birthDay;
         this.date = date;
+        this.lastMemeNumber = lastMemeNumber;
         this.memeRequestTime = memeRequestTime;
         this.userRequestTime = userRequestTime;
         this.phone = phone;
         this.status = status;
     }
-    public User() {
-        super();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(sex, user.sex) && Objects.equals(country, user.country) && Objects.equals(city, user.city) && Objects.equals(birthDay, user.birthDay) && Objects.equals(date, user.date) && Objects.equals(memeRequestTime, user.memeRequestTime) && Objects.equals(userRequestTime, user.userRequestTime) && Objects.equals(phone, user.phone) && Objects.equals(status, user.status);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, login, password, firstName, lastName, sex, country, city, birthDay, date, memeRequestTime, userRequestTime, phone, status);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", sex='" + sex + '\'' +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", birthDay=" + birthDay +
+                ", date=" + date +
+                ", lastMemeNumber=" + lastMemeNumber +
+                ", memeRequestTime=" + memeRequestTime +
+                ", userRequestTime=" + userRequestTime +
+                ", phone='" + phone + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 
     @Override
     public int getId() {
@@ -141,6 +179,14 @@ public class User extends Model{
         this.date = date;
     }
 
+    public int getLastMemeNumber() {
+        return lastMemeNumber;
+    }
+
+    public void setLastMemeNumber(int lastMemeNumber) {
+        this.lastMemeNumber = lastMemeNumber;
+    }
+
     public LocalDateTime getMemeRequestTime() {
         return memeRequestTime;
     }
@@ -176,6 +222,7 @@ public class User extends Model{
     public static final String FIELD_ID = "id";
     public static final String FIELD_MEME_REQUEST_TIME = "memeRequestTime";
     public static final String FIELD_USER_REQUEST_TIME = "userRequestTime";
+    public static final String FIELD_LAST_MEME_NUMBER = "lastMemeNumber";
     public static final String FIELD_LOGIN = "login";
     public static final String FIELD_PASSWORD = "password";
     public static final String FIELD_FIRST_NAME = "firstName";

@@ -1,8 +1,10 @@
 package com.baurr.baldezh.model;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 @DatabaseTable(tableName = "userIntermation")
@@ -15,10 +17,10 @@ public class UserIntermation extends Model{
     private User target;
     @DatabaseField(columnName = "reaction")
     private String reaction;
-    @DatabaseField(columnName = "date")
-    private String date;
+    @DatabaseField(columnName = "date", dataType = DataType.SERIALIZABLE)
+    private LocalDate date;
 
-    public UserIntermation(int id, User source, User target, String reaction, String date) {
+    public UserIntermation(int id, User source, User target, String reaction, LocalDate date) {
         this.id = id;
         this.source = source;
         this.target = target;
@@ -63,11 +65,11 @@ public class UserIntermation extends Model{
         this.reaction = reaction;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

@@ -4,7 +4,7 @@ user = open('user.txt', 'w')
 user.write(
         '[\n'
     )
-for i in range(5,100):
+for i in range(5,99):
     letters = string.ascii_letters
     login = ( ''.join(random.choice(letters) for i in range(10)) )
     password = ( ''.join(random.choice(letters) for i in range(15)) )
@@ -19,7 +19,7 @@ for i in range(5,100):
         sex = 'female'
     country = ( ''.join(random.choice(letters) for i in range(8)) )
     city = ( ''.join(random.choice(letters) for i in range(7)) )
-    birthday = '2004-10-12'
+    birthday = ( ''.join(random.choice(dig) for i in range(8)) )
     day = ( ''.join(random.choice(dig) for i in range(8)) )
     phone = '+' + ( ''.join(random.choice(dig) for i in range(7)) )
     user.write( '{\n' + "\"id\": " + "\""+ str(i)+ "\",\n"
@@ -29,8 +29,9 @@ for i in range(5,100):
         + lname + "\",\n"  + "\"sex\": " + "\"" + sex + "\",\n"
         + "\"country\": " + "\"" + country + "\",\n"
         + "\"city\": " + "\"" + city + "\",\n"
-        + "\"birthDay\": " + "\"" + birthday + "\",\n"
+        + "\"birthDay\": " + "\"" + "2004-10-12" + "\",\n"
         + "\"date\": " + "\"" + "2021-04-08" + "\",\n"
+        + "\"lastMemeNumber\": " + "\"" + "0" + "\",\n"
         + "\"memeRequestTime\": " + "\"" + "2021-04-08T10:14:54.969740400"+ "\",\n"
         + "\"userRequestTime\": " + "\"" + "2021-04-08T10:14:54.969740400"+ "\",\n"
         + "\"phone\": " + "\"" + phone + "\",\n"
@@ -64,7 +65,7 @@ for i in range(100):
     if li == 0:
         liked="false"
     dig = string.digits
-    day = ( ''.join(random.choice(dig) for i in range(8)) )
+    day = "2021-04-08"
     memeReview.write( '{\n' +
     "\"id\": " + "\""+ str(i)+ "\",\n"
     + "\"userId\": " + "\"" + str(userId) + "\",\n"
@@ -87,7 +88,7 @@ for i in range(100):
     if li == 0:
         reaction="left"
     dig = string.digits
-    day = ( ''.join(random.choice(dig) for i in range(8)) )
+    day = "2021-04-08"
     userIntermation.write( '{\n' + 
     "\"id\": " + "\""+ str(i)+ "\",\n" 
     + "\"source\": " + "\"" + str(source) + "\",\n"   

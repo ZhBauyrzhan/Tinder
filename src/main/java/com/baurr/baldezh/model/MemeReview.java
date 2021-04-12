@@ -1,8 +1,10 @@
 package com.baurr.baldezh.model;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 @DatabaseTable(tableName = "memeReview")
@@ -13,12 +15,12 @@ public class MemeReview extends Model{
     private User userId;
     @DatabaseField(columnName = "memeId", foreign = true, foreignAutoRefresh = true)
     private Meme memeId;
-    @DatabaseField(columnName = "date")
-    private String date;
+    @DatabaseField(columnName = "date", dataType = DataType.SERIALIZABLE)
+    private LocalDate date;
     @DatabaseField(columnName = "liked")
     private boolean liked;
 
-    public MemeReview(int id, User userId, Meme memeId, String date, boolean liked) {
+    public MemeReview(int id, User userId, Meme memeId, LocalDate date, boolean liked) {
         this.id = id;
         this.userId = userId;
         this.memeId = memeId;
@@ -56,11 +58,11 @@ public class MemeReview extends Model{
         this.memeId = memeId;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

@@ -53,7 +53,7 @@ public class Main {
                 .addSerializer(User.class, new UserSerializer()).addDeserializer(User.class, new UserDeserializer());
         ObjectMapper objectMapper = new ObjectMapper().registerModule(simpleModule);
 
-        UserController userController = new UserController(userService, objectMapper);
+        UserController userController = new UserController(userService, objectMapper, userIntermationService, memeReviewService);
         MemeController memeController = new MemeController(memeService, objectMapper);
         MemeReviewController memeReviewController = new MemeReviewController(memeReviewService, objectMapper);
         UserIntermationController userIntermationController = new UserIntermationController(userIntermationService, objectMapper);
