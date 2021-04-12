@@ -22,4 +22,20 @@ public class UserIntermationController extends AbstractController<UserIntermatio
         this.service = service;
         this.objectMapper = objectMapper;
     }
+
+    @Override
+    public void bigPost(Context context) {
+        try {
+            List<UserIntermation> objects = objectMapper.readValue(context.body(), new TypeReference<List<UserIntermation>>(){});
+            for(int i = 0; i < objects.size(); i++) {
+                service.save(objects.get(i));
+                UserIntermation saved = service.findById(objects.get(i).getId());
+                context.result(objectMapper.writeValueAsString(saved));
+            }
+            context.status(201);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            context.status(400);
+        }
+    }
 }

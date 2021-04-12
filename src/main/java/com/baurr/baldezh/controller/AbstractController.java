@@ -22,20 +22,6 @@ public abstract class AbstractController<T extends Model> implements Controller<
         this.objectMapper = objectMapper;
         this.clazz = clazz;
     }
-    public void bigPost(Context context) {
-        try {
-            List<T> objects = objectMapper.readValue(context.body(), new TypeReference<List<T>>(){});
-            for(int i = 0; i < objects.size(); i++) {
-                service.save(objects.get(i));
-                T saved = service.findById(objects.get(i).getId());
-                context.result(objectMapper.writeValueAsString(saved));
-            }
-            context.status(201);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            context.status(400);
-        }
-    }
     @Override
     public Boolean checkRights(Context context) {
         String senderPassword = context.basicAuthCredentials().getPassword();

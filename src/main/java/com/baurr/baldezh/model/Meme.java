@@ -1,10 +1,10 @@
 package com.baurr.baldezh.model;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @DatabaseTable(tableName = "meme")
 public class Meme extends Model{
@@ -12,10 +12,10 @@ public class Meme extends Model{
     private int id;
     @DatabaseField(columnName = "link")
     private String link;
-    @DatabaseField(columnName = "date")
-    private LocalDateTime date;
+    @DatabaseField(columnName = "date", dataType = DataType.SERIALIZABLE)
+    private LocalDate date;
 
-    public Meme(int id, String link, LocalDateTime date) {
+    public Meme(int id, String link, LocalDate date) {
         this.id = id;
         this.link = link;
         this.date = date;
@@ -43,11 +43,11 @@ public class Meme extends Model{
         this.link = link;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

@@ -37,10 +37,10 @@ public class UserDeserializer extends StdDeserializer<User> {
         String sex = root.get(User.FIELD_SEX).asText();
         String country = root.get(User.FIELD_COUNTRY).asText();
         String city = root.get(User.FIELD_CITY).asText();
-        String birthDay = root.get(User.FIELD_BIRTH_DAY).asText();
-        LocalDate date = LocalDate.parse(root.get(User.FIELD_DATE).asText());
-        LocalDateTime memeRequestTime =  LocalDateTime.parse(root.get(User.FIELD_MEME_REQUEST_TIME).asText());
-        LocalDateTime userRequestTime=  LocalDateTime.parse(root.get(User.FIELD_USER_REQUEST_TIME).asText());
+        LocalDate birthDay =  root.get(User.FIELD_BIRTH_DAY).traverse(jsonParser.getCodec()).readValueAs(LocalDate.class);
+        LocalDate date =  root.get(User.FIELD_DATE).traverse(jsonParser.getCodec()).readValueAs(LocalDate.class);
+        LocalDateTime memeRequestTime =  root.get(User.FIELD_MEME_REQUEST_TIME).traverse(jsonParser.getCodec()).readValueAs(LocalDateTime.class);
+        LocalDateTime userRequestTime =  root.get(User.FIELD_USER_REQUEST_TIME).traverse(jsonParser.getCodec()).readValueAs(LocalDateTime.class);
         String phone = root.get(User.FIELD_PHONE).asText();
         String status = root.get(User.FIELD_STATUS).asText();
         return new User(id, login, hashPassword, firstName, lastName, sex, country, city, birthDay, date, memeRequestTime, userRequestTime, phone, status);

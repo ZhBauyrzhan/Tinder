@@ -22,19 +22,33 @@ public class MemeController extends AbstractController<Meme>{
         this.objectMapper = objectMapper;
     }
     @Override
+    public void bigPost(Context context) {
+        try {
+            List<Meme> objects = objectMapper.readValue(context.body(), new TypeReference<List<Meme>>(){});
+            for(int i = 0; i < objects.size(); i++) {
+                service.save(objects.get(i));
+                Meme saved = service.findById(objects.get(i).getId());
+                context.result(objectMapper.writeValueAsString(saved));
+            }
+            context.status(201);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            context.status(400);
+        }
+    }
+    @Override
     public Boolean checkRights(Context context) {
         String senderLogin = context.basicAuthCredentials().getUsername();
         User user = service.findUserByLogin(senderLogin);
         String senderPassword = context.basicAuthCredentials().getPassword();
         LocalDateTime localDateTime = LocalDateTime.now();
         return ( (BCrypt.checkpw(senderPassword, user.getPassword()) || user.getStatus().equals(User.ADMIN))
-                && (user.getMemeRequestTime().plusDays(User.NEED_DAYS).plusHours(User.NEED_HOURS).plusMinutes(User.NEED_MINUTES).plusSeconds(User.NEED_SECONDS).isAfter(localDateTime)) );
+                && (user.getMemeRequestTime().plusDays(User.NEED_DAYS).plusHours(User.NEED_HOURS).plusMinutes(User.NEED_MINUTES).plusSeconds(User.NEED_SECONDS).isBefore(localDateTime)) );
     }
-
     @Override
     public void getAll(Context context, int pageNumber, int pageSize) {
         try {
-            if(super.checkRights(context)) {
+            if(checkRights(context)) {
                 List<Meme> returnedModels = service.findAll(pageNumber, pageSize);
                 context.result(objectMapper.writeValueAsString(returnedModels));
             }

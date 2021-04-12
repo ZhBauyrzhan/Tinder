@@ -4,7 +4,7 @@ user = open('user.txt', 'w')
 user.write(
         '[\n'
     )
-for i in range(3):
+for i in range(5,100):
     letters = string.ascii_letters
     login = ( ''.join(random.choice(letters) for i in range(10)) )
     password = ( ''.join(random.choice(letters) for i in range(15)) )
@@ -19,17 +19,23 @@ for i in range(3):
         sex = 'female'
     country = ( ''.join(random.choice(letters) for i in range(8)) )
     city = ( ''.join(random.choice(letters) for i in range(7)) )
-    birthday = ( ''.join(random.choice(dig) for i in range(8)) )
+    birthday = '2004-10-12'
     day = ( ''.join(random.choice(dig) for i in range(8)) )
     phone = '+' + ( ''.join(random.choice(dig) for i in range(7)) )
-    user.write( '{\n' + "\"id\": " + "\""+ str(i)+ "\",\n" + "\"login\": " + "\""+ login + "\",\n" + "\"password\": " + "\""+ password+ "\",\n" + "\"firstName\": " + "\"" + fname + "\",\n"   + "\"lastName\": " + "\"" + lname + "\",\n"  + "\"sex\": " + "\"" + sex + "\",\n"
-    + "\"country\": " + "\"" + country + "\",\n"
-    + "\"city\": " + "\"" + city + "\",\n"
-    + "\"birthDay\": " + "\"" + birthday + "\",\n"
-    + "\"date\": " + "\"" + day + "\",\n"
-    + "\"phone\": " + "\"" + phone + "\",\n"
-    + "\"status\": " + "\"" + "common" + "\"\n"
-    + '},\n')
+    user.write( '{\n' + "\"id\": " + "\""+ str(i)+ "\",\n"
+        + "\"login\": " + "\""+ login + "\",\n" + "\"password\": "
+        + "\""+ password+ "\",\n" + "\"firstName\": " + "\""
+        + fname + "\",\n"   + "\"lastName\": " + "\""
+        + lname + "\",\n"  + "\"sex\": " + "\"" + sex + "\",\n"
+        + "\"country\": " + "\"" + country + "\",\n"
+        + "\"city\": " + "\"" + city + "\",\n"
+        + "\"birthDay\": " + "\"" + birthday + "\",\n"
+        + "\"date\": " + "\"" + "2021-04-08" + "\",\n"
+        + "\"memeRequestTime\": " + "\"" + "2021-04-08T10:14:54.969740400"+ "\",\n"
+        + "\"userRequestTime\": " + "\"" + "2021-04-08T10:14:54.969740400"+ "\",\n"
+        + "\"phone\": " + "\"" + phone + "\",\n"
+        + "\"status\": " + "\"" + "common" + "\"\n"
+        + '},\n')
 user.write(']')
 
 memef = open('meme.txt', 'w')
@@ -41,7 +47,7 @@ for i in range(100):
     meme = ( ''.join(random.choice(letters) for i in range(10)) )
     dig = string.digits
     day = ( ''.join(random.choice(dig) for i in range(8)) )
-    memef.write( '{\n' + "\"id\": " + "\""+ str(i)+ "\",\n" + "\"link\": " + "\"" + meme + "\",\n"   + "\"date\": " + "\"" + day +"\"\n"+ '},\n')
+    memef.write( '{\n' + "\"id\": " + "\""+ str(i)+ "\",\n" + "\"link\": " + "\"" + meme + "\",\n"   + "\"date\": " + "\"" + "2021-04-08" +"\"\n"+ '},\n')
 memef.write(']\n')
 
 
@@ -90,3 +96,4 @@ for i in range(100):
     + "\"date\": " + "\"" + day +"\"\n"
     + '},\n')
 userIntermation.write(']\n')
+print(1)

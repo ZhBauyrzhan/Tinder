@@ -2,6 +2,7 @@ package com.baurr.baldezh.json.deserializer;
 
 import com.baurr.baldezh.json.serializer.LocalDateSerializer;
 import com.baurr.baldezh.model.Meme;
+import com.baurr.baldezh.model.User;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -20,7 +21,7 @@ public class MemeDeserializer extends StdDeserializer<Meme> {
         JsonNode root = jsonParser.getCodec().readTree(jsonParser);
         int id = root.get(Meme.FIELD_ID).asInt();
         String link = root.get(Meme.FIELD_LINK).asText();
-        LocalDateTime date = LocalDateTime.parse(root.get(Meme.FIELD_DATE).asText());
+        LocalDate date =  root.get(Meme.FIELD_DATE).traverse(jsonParser.getCodec()).readValueAs(LocalDate.class);;
         return new Meme(id, link, date);
     }
 }

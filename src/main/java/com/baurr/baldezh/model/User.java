@@ -1,12 +1,11 @@
 package com.baurr.baldezh.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @DatabaseTable(tableName = "user")
 public class User extends Model{
@@ -26,20 +25,20 @@ public class User extends Model{
     private String country;
     @DatabaseField(columnName = "city")
     private String city;
-    @DatabaseField(columnName = "birthDay")
-    private String birthDay;
-    @DatabaseField(columnName = "date")
+    @DatabaseField(columnName = "birthDay", dataType = DataType.SERIALIZABLE)
+    private LocalDate birthDay;
+    @DatabaseField(columnName = "date", dataType = DataType.SERIALIZABLE)
     private LocalDate date;
-    @DatabaseField(columnName = "memeRequestTime")
+    @DatabaseField(columnName = "memeRequestTime", dataType = DataType.SERIALIZABLE)
     private LocalDateTime memeRequestTime;
-    @DatabaseField(columnName = "userRequestTime")
+    @DatabaseField(columnName = "userRequestTime", dataType = DataType.SERIALIZABLE)
     private LocalDateTime userRequestTime;
     @DatabaseField(columnName = "phone")
     private String phone;
     @DatabaseField(columnName = "status")
     private String status;
 
-    public User(int id, String login, String password, String firstName, String lastName, String sex, String country, String city, String birthDay, LocalDate date, LocalDateTime memeRequestTime, LocalDateTime userRequestTime, String phone, String status) {
+    public User(int id, String login, String password, String firstName, String lastName, String sex, String country, String city, LocalDate birthDay, LocalDate date, LocalDateTime memeRequestTime, LocalDateTime userRequestTime, String phone, String status) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -55,6 +54,10 @@ public class User extends Model{
         this.phone = phone;
         this.status = status;
     }
+    public User() {
+        super();
+    }
+
 
     @Override
     public int getId() {
@@ -122,11 +125,11 @@ public class User extends Model{
         this.city = city;
     }
 
-    public String getBirthDay() {
+    public LocalDate getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(String birthDay) {
+    public void setBirthDay(LocalDate birthDay) {
         this.birthDay = birthDay;
     }
 

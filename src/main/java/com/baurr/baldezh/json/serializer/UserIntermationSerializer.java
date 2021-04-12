@@ -1,6 +1,5 @@
 package com.baurr.baldezh.json.serializer;
 
-import com.baurr.baldezh.model.MemeReview;
 import com.baurr.baldezh.model.UserIntermation;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;

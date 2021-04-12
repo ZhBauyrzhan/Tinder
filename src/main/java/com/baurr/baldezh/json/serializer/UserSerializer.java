@@ -22,7 +22,7 @@ public class UserSerializer extends StdSerializer<User> {
         gen.writeStringField(User.FIELD_SEX, user.getSex());
         gen.writeStringField(User.FIELD_COUNTRY, user.getCountry());
         gen.writeStringField(User.FIELD_CITY, user.getCity());
-        gen.writeStringField(User.FIELD_BIRTH_DAY, user.getBirthDay());
+        gen.writeObjectField(User.FIELD_BIRTH_DAY, user.getBirthDay());
         gen.writeObjectField(User.FIELD_DATE, user.getDate());
         gen.writeObjectField(User.FIELD_MEME_REQUEST_TIME, user.getDate());
         gen.writeObjectField(User.FIELD_USER_REQUEST_TIME, user.getDate());

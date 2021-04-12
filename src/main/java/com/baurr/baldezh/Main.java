@@ -3,14 +3,8 @@ package com.baurr.baldezh;
 import com.baurr.baldezh.configuration.DataBaseConfiguration;
 import com.baurr.baldezh.configuration.JdbcConfiguration;
 import com.baurr.baldezh.controller.*;
-import com.baurr.baldezh.json.deserializer.MemeDeserializer;
-import com.baurr.baldezh.json.deserializer.MemeReviewDeserializer;
-import com.baurr.baldezh.json.deserializer.UserDeserializer;
-import com.baurr.baldezh.json.deserializer.UserIntermationDeserializer;
-import com.baurr.baldezh.json.serializer.MemeReviewSerializer;
-import com.baurr.baldezh.json.serializer.MemeSerializer;
-import com.baurr.baldezh.json.serializer.UserIntermationSerializer;
-import com.baurr.baldezh.json.serializer.UserSerializer;
+import com.baurr.baldezh.json.deserializer.*;
+import com.baurr.baldezh.json.serializer.*;
 import com.baurr.baldezh.model.Meme;
 import com.baurr.baldezh.model.MemeReview;
 import com.baurr.baldezh.model.User;
@@ -26,6 +20,8 @@ import com.j256.ormlite.dao.DaoManager;
 import io.javalin.Javalin;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
@@ -49,16 +45,18 @@ public class Main {
         });
 
         SimpleModule simpleModule = new SimpleModule()
+                .addSerializer(LocalDate.class, new LocalDateSerializer()).addDeserializer(LocalDate.class, new LocalDateDeserializer())
+                .addSerializer(LocalDateTime.class, new LocalDateTimeSerializer()).addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer())
                 .addSerializer(MemeReview.class, new MemeReviewSerializer()).addDeserializer(MemeReview.class, new MemeReviewDeserializer(userService,memeService))
                 .addSerializer(Meme.class, new MemeSerializer()).addDeserializer(Meme.class, new MemeDeserializer())
                 .addSerializer(UserIntermation.class, new UserIntermationSerializer()).addDeserializer(UserIntermation.class, new UserIntermationDeserializer(userService))
                 .addSerializer(User.class, new UserSerializer()).addDeserializer(User.class, new UserDeserializer());
         ObjectMapper objectMapper = new ObjectMapper().registerModule(simpleModule);
 
-        Controller<User> userController = new UserController(userService, objectMapper);
-        Controller<Meme> memeController = new MemeController(memeService, objectMapper);
-        Controller<MemeReview> memeReviewController = new MemeReviewController(memeReviewService, objectMapper);
-        Controller<UserIntermation> userIntermationController = new UserIntermationController(userIntermationService, objectMapper);
+        UserController userController = new UserController(userService, objectMapper);
+        MemeController memeController = new MemeController(memeService, objectMapper);
+        MemeReviewController memeReviewController = new MemeReviewController(memeReviewService, objectMapper);
+        UserIntermationController userIntermationController = new UserIntermationController(userIntermationService, objectMapper);
         app.routes( () -> {
             path("users", () -> {
                 get(ctx -> userController.getAll(ctx,
